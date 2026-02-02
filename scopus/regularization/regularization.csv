@@ -1,0 +1,13 @@
+﻿Regularization Method,No Filter,Image,Time Series
+All Methods,42486,12704,710
+L1 Regularization,253,32,5
+L2 Regularization,536,129,10
+Dropout,6856,1731,213
+Early Stopping,900,149,33
+Batch Normalization,3503,1131,28
+Data Augmentation,20763,7998,223
+Weight Decay,614,105,16
+Adversarial Training,3990,744,46
+Label Smoothing,476,168,4
+Multi-Task Learning,6789,1437,160
+Noise Injection,385,56,9

@@ -1,0 +1,90 @@
+[
+    {
+        "dataset": "cifar10",
+        "models": [
+            "ResNet20",
+            "ResNet56",
+            "ResNet110"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "cifar100",
+        "models": [
+            "ResNet20",
+            "ResNet56",
+            "ResNet110"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "oxford_flowers102",
+        "models": [
+            "ResNet18",
+            "ResNet50",
+            "ResNet101"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "uc_merced",
+        "models": [
+            "ResNet18",
+            "ResNet50",
+            "ResNet101"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "cifar10",
+        "models": [
+            "ViTS8",
+            "ViTB8"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "cifar100",
+        "models": [
+            "ViTS8",
+            "ViTB8"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "oxford_flowers102",
+        "models": [
+            "ViTTiny16",
+            "ViTS16",
+            "ViTB16"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "uc_merced",
+        "models": [
+            "ViTTiny16",
+            "ViTS16",
+            "ViTB16"
+        ],
+        "pretrained": false
+    },
+    {
+        "dataset": "oxford_flowers102",
+        "models": [
+            "ViTTiny16",
+            "ViTS16",
+            "ViTB16"
+        ],
+        "pretrained": true
+    },
+    {
+        "dataset": "uc_merced",
+        "models": [
+            "ViTTiny16",
+            "ViTS16",
+            "ViTB16"
+        ],
+        "pretrained": true
+    }
+]

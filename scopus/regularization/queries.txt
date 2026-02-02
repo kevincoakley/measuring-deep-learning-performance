@@ -1,0 +1,60 @@
+
+all
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" OR "L2 regularization" OR "weight decay" OR "batch normalization" OR "dropout" OR "data augmentation" OR "early stopping" OR "adversarial training" OR "label smoothing" OR "multi-task learning" OR "multitask learning" OR "noise injection")
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" OR "L2 regularization" OR "weight decay" OR "batch normalization" OR "dropout" OR "data augmentation" OR "early stopping" OR "adversarial training" OR "label smoothing" OR "multi-task learning" OR "multitask learning" OR "noise injection") AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" OR "L2 regularization" OR "weight decay" OR "batch normalization" OR "dropout" OR "data augmentation" OR "early stopping" OR "adversarial training" OR "label smoothing" OR "multi-task learning" OR "multitask learning" OR "noise injection") AND ( image AND ( classification OR segmentation ) )
+
+l1_regularization
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" )
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "L1 regularization" ) AND ( image AND ( classification OR segmentation ) )
+
+l2_regularization
+( "deep learning" OR "neural network" ) AND ( "L2 regularization" )
+( "deep learning" OR "neural network" ) AND ( "L2 regularization" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "L2 regularization" ) AND ( image AND ( classification OR segmentation ) )
+
+dropout
+( "deep learning" OR "neural network" ) AND ( "dropout" )
+( "deep learning" OR "neural network" ) AND ( "dropout" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "dropout" ) AND ( image AND ( classification OR segmentation ) )
+
+early_stopping
+( "deep learning" OR "neural network" ) AND ( "early stopping" )
+( "deep learning" OR "neural network" ) AND ( "early stopping" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "early stopping" ) AND ( image AND ( classification OR segmentation ) )
+
+batch_normalization
+( "deep learning" OR "neural network" ) AND ( "batch normalization" )
+( "deep learning" OR "neural network" ) AND ( "batch normalization" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "batch normalization" ) AND ( image AND ( classification OR segmentation ) )
+
+data_augmentation
+( "deep learning" OR "neural network" ) AND ( "data augmentation" )
+( "deep learning" OR "neural network" ) AND ( "data augmentation" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "data augmentation" ) AND ( image AND ( classification OR segmentation ) )
+
+weight_decay
+( "deep learning" OR "neural network" ) AND ( "weight decay" )
+( "deep learning" OR "neural network" ) AND ( "weight decay" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "weight decay" ) AND ( image AND ( classification OR segmentation ) )
+
+adversarial_training
+( "deep learning" OR "neural network" ) AND ( "adversarial training" )
+( "deep learning" OR "neural network" ) AND ( "adversarial training" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "adversarial training" ) AND ( image AND ( classification OR segmentation ) )
+
+label_smoothing
+( "deep learning" OR "neural network" ) AND ( "label smoothing" )
+( "deep learning" OR "neural network" ) AND ( "label smoothing" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "label smoothing" ) AND ( image AND ( classification OR segmentation ) )
+
+multitask_learning
+( "deep learning" OR "neural network" ) AND ( "multi-task learning" OR "multitask learning" )
+( "deep learning" OR "neural network" ) AND ( "multi-task learning" OR "multitask learning" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "multi-task learning" OR "multitask learning" ) AND ( image AND ( classification OR segmentation ) )
+
+noise_injection
+( "deep learning" OR "neural network" ) AND ( "noise injection" )
+( "deep learning" OR "neural network" ) AND ( "noise injection" ) AND ( "time-series" AND ( forecasting OR prediction ) )
+( "deep learning" OR "neural network" ) AND ( "noise injection" ) AND ( image AND ( classification OR segmentation ) )

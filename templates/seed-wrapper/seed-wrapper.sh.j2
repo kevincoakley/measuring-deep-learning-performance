@@ -1,0 +1,129 @@
+#!/bin/bash
+
+set -e
+
+if [[ "${1}" != "" ]]; then
+    RUN_NAME="${1}"
+else
+    RUN_NAME="not_set"
+fi
+
+if [[ "${2}" != "" ]]; then
+    FRAMEWORK="${2}"
+else
+    echo "Framework is required"
+    exit 1
+fi
+
+if [[ "${3}" != "" ]]; then
+    MODEL_NAME="${3}"
+else
+    echo "Model name required"
+    exit 1
+fi
+
+if [[ "${4}" != "" ]]; then
+    DATASET_NAME="${4}"
+else
+    echo "Dataset name required"
+    exit 1
+fi
+
+if [[ "${5}" != "" ]]; then
+    OPTIMIZER="${5}"
+else
+    echo "Optimizer required"
+    exit 1
+fi
+
+if [[ "${6}" != "" ]]; then
+    EPOCHS="${6}"
+else
+    echo "Epochs required"
+    exit 1
+fi
+
+if [[ "${7}" != "" ]]; then
+    BATCH_SIZE="${7}"
+else
+    echo "Batch size required"
+    exit 1
+fi
+
+if [[ "${8}" != "" ]]; then
+    LEARNING_RATE="${8}"
+else
+    echo "Learning rate required"
+    exit 1
+fi
+
+if [[ "${9}" != "" ]]; then
+    LR_SCHEDULER="${9}"
+else
+    echo "Learning rate scheduler required"
+    exit 1
+fi
+
+if [[ "${10}" != "" ]]; then
+    LR_WARMUP="${10}"
+else
+    echo "Learing rate warmup required"
+    exit 1
+fi
+
+
+echo "Run name: $RUN_NAME"
+echo "Framework: $FRAMEWORK"
+echo "Model name: $MODEL_NAME"
+echo "Dataset name: $DATASET_NAME"
+echo "Optimizer: $OPTIMIZER"
+echo "Epochs: $EPOCHS"
+echo "Batch size: $BATCH_SIZE"
+echo "Learning rate: $LEARNING_RATE"
+echo "Learning rate scheduler: $LR_SCHEDULER"
+echo "Learning rate warmup: $LR_WARMUP"
+
+#
+# For generate the command line flags for variables that are on/off
+#
+COMMAND_LINE_FLAGS=""
+
+if [[ $LR_SCHEDULER == 1 ]]; then
+    COMMAND_LINE_FLAGS="$COMMAND_LINE_FLAGS --lr-scheduler"
+fi
+
+if [[ $LR_WARMUP == 1 ]]; then
+    COMMAND_LINE_FLAGS="$COMMAND_LINE_FLAGS --lr-warmup"
+fi
+
+echo "Command line flags: $COMMAND_LINE_FLAGS"
+
+#
+# If the openstack-creds.sh file exsits, source the environment variables
+# for openstack swift uploads
+#
+OS_CRED_FILE=openstack-creds.sh
+
+if [ -f "$OS_CRED_FILE" ]; then
+    echo "$OS_CRED_FILE exists."
+    source $OS_CRED_FILE
+else 
+    echo "$OS_CRED_FILE does not exist."
+fi
+
+nvidia-smi
+
+# for tensorflow
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+
+python ./image_classification.py --run-name $RUN_NAME --save-filename $RUN_NAME-{{ run_number }} --op-determinism --seed-val 123456789 --ml-framework $FRAMEWORK --model-name $MODEL_NAME --dataset-name $DATASET_NAME --optimizer $OPTIMIZER --epochs 1 --batch-size $BATCH_SIZE --learning-rate $LEARNING_RATE $COMMAND_LINE_FLAGS
+python ./image_classification.py --run-name $RUN_NAME --save-filename $RUN_NAME-{{ run_number }} --op-determinism --seed-val 123456789 --ml-framework $FRAMEWORK --model-name $MODEL_NAME --dataset-name $DATASET_NAME --optimizer $OPTIMIZER --epochs 1 --batch-size $BATCH_SIZE --learning-rate $LEARNING_RATE $COMMAND_LINE_FLAGS
+
+{% for random_seed in random_seeds %}
+python ./image_classification.py --save-model --save-predictions --run-name $RUN_NAME --save-filename $RUN_NAME-{{ run_number }} --op-determinism --seed-val {{ random_seed }} --ml-framework $FRAMEWORK --model-name $MODEL_NAME --dataset-name $DATASET_NAME --optimizer $OPTIMIZER --epochs $EPOCHS --batch-size $BATCH_SIZE --learning-rate $LEARNING_RATE $COMMAND_LINE_FLAGS
+swift upload --skip-identical project-02 models/$RUN_NAME/*
+swift upload --skip-identical project-02 predictions/$RUN_NAME/*
+swift upload project-02 $RUN_NAME-{{ run_number }}.csv --object-name results/$RUN_NAME-{{ run_number }}.csv
+swift upload project-02 $RUN_NAME-{{ run_number }}.yaml --object-name results/$RUN_NAME-{{ run_number }}.yaml
+{% endfor %}
