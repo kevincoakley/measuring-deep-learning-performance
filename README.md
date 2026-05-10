@@ -3,7 +3,9 @@
 Code and results for the paper:
 
 **Measuring Deep Learning Performance - An Empirical Study of Performance Distributions Across Architectures and Tasks**
+
 Kevin L. Coakley & Odd Erik Gundersen
+
 *Scientific Reports* (2026). https://doi.org/10.1038/s41598-026-49656-z
 
 ## Abstract
